@@ -1,2 +1,2 @@
 # react-web
-React Web
+React Web Components
