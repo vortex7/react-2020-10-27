@@ -1,9 +1,9 @@
 module.exports = {
   apps : [{
     name: "react-web",
-    script: "src/app.js",
+    script: "server.js",
     args: "",
-    instances: 5,
+    instances: 2,
     autorestart: true,
     watch: false,
     max_memory_restart: "1G"
