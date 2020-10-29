@@ -1,0 +1,16 @@
+{
+  "name": "react-api-nginx",
+  "description": "react-api-nginx",
+  "repo": "https://github.com/vortex7/react-2020-10-27",
+  "license": "MIT",
+  "author": "vortex7",
+  "framework": {
+    "name": "micro-fab"
+  },
+  "config": {
+    "name": "react-api",
+    "type": "container",
+    "port": "4000"
+  }
+}
+

@@ -1,0 +1,22 @@
+{
+  "name": "react-api",
+  "description": "react-api",
+  "repo": "https://github.com/vortex7/react-2020-10-17",
+  "license": "MIT",
+  "author": "vortex7",
+  "framework": {
+    "name": "water-vapor"
+  },
+  "instances": 4,
+  "config": {
+    "mongoUrl": "mongodb://localhost:27017/",
+    "mongoDatabase": "rct",
+    "token": "dedde310-19e9-11eb-ac63-db24f0832b6e",
+    "port": "4000",
+    "domain": "localhost",
+    "basePath": "/",
+    "pagination:" : {
+      "itemsPerPage": 10
+    }
+  }
+}
