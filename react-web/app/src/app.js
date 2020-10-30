@@ -12,8 +12,6 @@ import { components, defaultPage, pages } from "./app-config"
 // Components
 import NavBar from "./components/nav-bar"
 
-// Pages
-
 export default function App() {
   return (
     <Router>
