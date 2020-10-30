@@ -35,7 +35,7 @@ export default function NavBar(props) {
             <Typography variant="h6" className={classes.title}>
               {props.title}
             </Typography>
-          <Button component={Link} to={defaultPage.url} color="inherit">{defaultPage.name}</Button>
+          <Button component={Link} to={defaultPage.url} color="inherit">{defaultPage.title}</Button>
         </Toolbar>
       </AppBar>
     </div>

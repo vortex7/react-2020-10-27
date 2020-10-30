@@ -50,7 +50,7 @@ export default function SideMenu() {
     >
       <MenuList>
       {pages.map((page, index) => (
-        <MenuItem key={index} component={Link} to={page.url}>{page.name}</MenuItem>
+        <MenuItem key={index} component={Link} to={page.url}>{page.title}</MenuItem>
       ))}
       </MenuList>
     </div>
