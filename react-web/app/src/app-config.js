@@ -1,19 +1,19 @@
-import About from "./pages/about"
+import AboutPage from "./pages/about-page"
 
 const pages = [
   {
-    name: "About",
+    name: "AboutPage",
     url: "/about"
   }
 ]
 
 const defaultPage = {
-  name: "About",
+  name: "AboutPage",
   url: "/"
 }
 
 const components = {
-  "About": About
+  "AboutPage": AboutPage
 }
 
 export { components, defaultPage, pages }
