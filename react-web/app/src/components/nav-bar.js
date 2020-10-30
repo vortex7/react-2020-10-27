@@ -9,6 +9,8 @@ import SideMenu from "./side-menu"
 
 import { Link } from "react-router-dom"
 
+import { defaultPage } from "../app-config"
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -33,7 +35,7 @@ export default function NavBar(props) {
             <Typography variant="h6" className={classes.title}>
               {props.title}
             </Typography>
-          <Button component={Link} to="/" color="inherit">About</Button>
+          <Button component={Link} to={defaultPage.url} color="inherit">{defaultPage.name}</Button>
         </Toolbar>
       </AppBar>
     </div>

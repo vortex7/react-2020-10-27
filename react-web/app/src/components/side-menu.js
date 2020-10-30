@@ -9,6 +9,8 @@ import MenuIcon from "@material-ui/icons/Menu"
 
 import { Link } from "react-router-dom"
 
+import { pages } from "../app-config"
+
 const useStyles = makeStyles({
   Menu: {
     width: 250,
@@ -17,6 +19,8 @@ const useStyles = makeStyles({
     width: "auto",
   },
 })
+
+console.log(pages)
 
 export default function SideMenu() {
   const classes = useStyles()
@@ -45,7 +49,9 @@ export default function SideMenu() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <MenuList>
-        <MenuItem component={Link} to="/">About</MenuItem>
+      {pages.map((page, index) => (
+        <MenuItem key={index} component={Link} to={page.url}>{page.name}</MenuItem>
+      ))}
       </MenuList>
     </div>
   )

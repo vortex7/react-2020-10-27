@@ -7,12 +7,12 @@ import {
 } from "react-router-dom"
 
 import "./app.css"
+import { components, defaultPage, pages } from "./app-config"
 
 // Components
 import NavBar from "./components/nav-bar"
 
 // Pages
-import About from "./pages/about"
 
 export default function App() {
   return (
@@ -22,12 +22,14 @@ export default function App() {
       </div>
       <div>
         <Switch>
-          <Route path="/about">
-            <About />
+          <Route path={defaultPage.url}>
+            {React.createElement(components[defaultPage.name])}
           </Route>
-          <Route path="/">
-            <About />
-          </Route>
+          {pages.map((page, index) => (
+            <Route key={index} path={page.url}>
+              {React.createElement(components[page.name])}
+            </Route>
+          ))}
         </Switch>
       </div>
     </Router>
