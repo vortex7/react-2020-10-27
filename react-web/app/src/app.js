@@ -13,7 +13,7 @@ import { components, pages } from "./app-config"
 import NavBar from "./components/nav-bar"
 
 export default function App() {
-  
+
   return (
     <Router>
       <div>
@@ -35,7 +35,7 @@ const getRoutes = () => {
     let component = React.createElement(components[page.name], null, null)
 
     let routeProps = {
-      key: index, 
+      key: index,
       path: page.url
     }
 

@@ -1,5 +1,4 @@
 import AboutPage from "./pages/about-page"
-import SolutionsPage from "./pages/solutions-page"
 
 const pages = [
   {
@@ -12,16 +11,10 @@ const pages = [
     title: "About",
     url: "/about"
   },
-  {
-    name: "SolutionsPage",
-    title: "Solutions",
-    url: "/solutions"
-  }
 ]
 
 const components = {
   "AboutPage": AboutPage,
-  "SolutionsPage": SolutionsPage,
 }
 
 export { components, pages }
