@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-export default function SolutionsPage() {
+const SolutionsPage = () => {
   const classes = useStyles();
 
   console.log("Solutions")
@@ -26,3 +26,5 @@ export default function SolutionsPage() {
     </Container>
   )
 }
+
+export default SolutionsPage

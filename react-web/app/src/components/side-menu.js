@@ -22,7 +22,7 @@ const useStyles = makeStyles({
 
 console.log(pages)
 
-export default function SideMenu() {
+const SideMenu = () => {
   const classes = useStyles()
   const [state, setState] = React.useState({
     top: false,
@@ -81,3 +81,5 @@ const getMenuItems = () => {
 
   return(menuItems)
 }
+
+export default SideMenu

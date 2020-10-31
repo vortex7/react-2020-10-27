@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-export default function AboutPage() {
+const AboutPage = () => {
   const classes = useStyles();
 
   console.log("About")
@@ -26,3 +26,5 @@ export default function AboutPage() {
     </Container>
   )
 }
+
+export default AboutPage

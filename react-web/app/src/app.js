@@ -12,7 +12,7 @@ import { components, pages } from "./app-config"
 // Components
 import NavBar from "./components/nav-bar"
 
-export default function App() {
+const App = () => {
 
   return (
     <Router>
@@ -49,3 +49,5 @@ const getRoutes = () => {
 
   return(routes)
 }
+
+export default App
