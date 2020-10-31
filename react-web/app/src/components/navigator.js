@@ -62,7 +62,7 @@ const Navigator = (props) => {
     <Drawer variant="permanent" {...other}>
       <List disablePadding>
         <ListItem className={clsx(classes.firebase, classes.item, classes.itemCategory)}>
-          Golden Years
+          React Web Components 
         </ListItem>
         {categories.map(({ id, children }) => (
           <React.Fragment key={id}>

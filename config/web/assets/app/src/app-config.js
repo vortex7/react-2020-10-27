@@ -36,7 +36,7 @@ const categories = [
   {
     id: "About",
     children: [
-      { id: "AboutPage", icon: <InfoIcon /> },
+      { id: "About", icon: <InfoIcon /> },
     ],
   },
 ]

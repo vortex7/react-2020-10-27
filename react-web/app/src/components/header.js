@@ -50,7 +50,13 @@ const Header = (props) => {
       >
         <>
           <Switch>
-            {getRoutes()}
+            {pages.map((page, index) => (
+            <Route key={index} exact path={page.url}>
+              <Tabs value={0} textColor="inherit">
+                <Tab textColor="inherit" label={page.title} />
+              </Tabs>
+            </Route>
+            ))}
           </Switch>
         </>
       </AppBar>
@@ -61,41 +67,6 @@ const Header = (props) => {
 Header.propTypes = {
   classes: PropTypes.object.isRequired,
   onDrawerToggle: PropTypes.func.isRequired,
-}
-
-const getRoutes = () => {
-  let routes = []
-
-  pages.forEach((page, index) => {
-    let tabProps = {
-      textColor: "inherit",
-      label: page.title,
-    }
-
-    let tab = React.createElement(Tab, tabProps, null)
-
-    let tabsProps = {
-      value: 0,
-      textColor: "inherit",
-    }
-
-    let tabs = React.createElement(Tabs, tabsProps, tab)
-
-    let routeProps = {
-      key: index,
-      path: page.url
-    }
-
-    if(index === 0) {
-      routeProps.exact = true
-    }
-
-    let route = React.createElement(Route, routeProps, tabs)
-
-    routes.push(route)
-  })
-
-  return(routes)
 }
 
 export default withStyles(styles)(Header)
