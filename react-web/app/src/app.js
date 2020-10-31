@@ -1,53 +1,108 @@
-import React from "react"
+import React, { useContext, useEffect, useState } from "react"
+import PropTypes from "prop-types"
+import CssBaseline from "@material-ui/core/CssBaseline"
+import { createMuiTheme, ThemeProvider, withStyles } from "@material-ui/core/styles"
+import Hidden from "@material-ui/core/Hidden"
+import Link from "@material-ui/core/Link"
+import Typography from "@material-ui/core/Typography"
 
 import {
   BrowserRouter as Router,
-  Switch,
-  Route,
 } from "react-router-dom"
 
-import "./app.css"
+import Content from "./components/content"
+import Header from "./components/header"
+import Navigator from "./components/navigator"
+
 import { components, pages } from "./app-config"
+import { theme } from "./theme"
 
-// Components
-import NavBar from "./components/nav-bar"
+const drawerWidth = 256
 
-const App = () => {
-
+function Copyright() {
   return (
-    <Router>
-      <div>
-        <NavBar title="Component Development" />
-      </div>
-      <div>
-        <Switch>
-          {getRoutes()}
-        </Switch>
-      </div>
-    </Router>
+    <Typography variant="body2" color="textSecondary" align="center">
+      {"Copyright © "}
+      <Link color="inherit" href="https://material-ui.com/">
+        Zero Dev Group, Inc.
+      </Link>{" "}
+      {new Date().getFullYear()}
+      {"."}
+    </Typography>
   )
 }
 
-const getRoutes = () => {
-  let routes = []
-
-  pages.forEach((page, index) => {
-    let component = React.createElement(components[page.name], null, null)
-
-    let routeProps = {
-      key: index,
-      path: page.url
-    }
-
-    if(index === 0) {
-      routeProps.exact = true
-    }
-
-    let route = React.createElement(Route, routeProps, component)
-    routes.push(route)
-  })
-
-  return(routes)
+const styles = {
+  root: {
+    display: "flex",
+    minHeight: "100vh",
+  },
+  drawer: {
+    [theme.breakpoints.up("sm")]: {
+      width: drawerWidth,
+      flexShrink: 0,
+    },
+  },
+  app: {
+    flex: 1,
+    display: "flex",
+    flexDirection: "column",
+  },
+  main: {
+    flex: 1,
+    padding: theme.spacing(6, 4),
+    background: "#eaeff1",
+  },
+  footer: {
+    padding: theme.spacing(2),
+    background: "#eaeff1",
+  },
 }
 
-export default App
+const App = (props) => {
+  const { classes } = props
+  const [mobileOpen, setMobileOpen] = React.useState(false)
+
+
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen)
+  }
+
+  return (
+    <ThemeProvider theme={theme}>
+      <Router>
+        <div className={classes.root}>
+          <CssBaseline />
+          <nav className={classes.drawer}>
+            <Hidden smUp implementation="js">
+              <Navigator
+                PaperProps={{ style: { width: drawerWidth } }}
+                variant="temporary"
+                open={mobileOpen}
+                onClose={handleDrawerToggle}
+              />
+            </Hidden>
+            <Hidden xsDown implementation="css">
+              <Navigator PaperProps={{ style: { width: drawerWidth } }} />
+            </Hidden>
+          </nav>
+          <div className={classes.app}>
+            <Header onDrawerToggle={handleDrawerToggle} />
+            <main className={classes.main}>
+              <Content />
+            </main>
+            <footer className={classes.footer}>
+              <Copyright />
+            </footer>
+          </div>
+        </div>
+      </Router>
+    </ThemeProvider>
+  )
+}
+
+App.propTypes = {
+  classes: PropTypes.object.isRequired,
+}
+
+export default withStyles(styles)(App)

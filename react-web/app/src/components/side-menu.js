@@ -20,8 +20,6 @@ const useStyles = makeStyles({
   },
 })
 
-console.log(pages)
-
 const SideMenu = () => {
   const classes = useStyles()
   const [state, setState] = React.useState({

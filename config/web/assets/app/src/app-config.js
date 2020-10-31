@@ -1,3 +1,9 @@
+import React from "react"
+import ArtTrackIcon from "@material-ui/icons/ArtTrack"
+import InfoIcon from "@material-ui/icons/Info"
+import PeopleIcon from "@material-ui/icons/People"
+import SearchIcon from "@material-ui/icons/Search"
+
 import AboutPage from "./pages/about-page"
 import SolutionsPage from "./pages/solutions-page"
 
@@ -20,9 +26,24 @@ const pages = [
   }
 ]
 
+const categories = [
+  {
+    id: "Products",
+    children: [
+      { id: "Solutions", icon: <ArtTrackIcon /> },
+    ],
+  },
+  {
+    id: "About",
+    children: [
+      { id: "AboutPage", icon: <InfoIcon /> },
+    ],
+  },
+]
+
 const components = {
   "AboutPage": AboutPage,
   "SolutionsPage": SolutionsPage,
 }
 
-export { components, pages }
+export { categories, components, pages }
