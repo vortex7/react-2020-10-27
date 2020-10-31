@@ -1,7 +1,13 @@
 import AboutPage from "./pages/about-page"
 import SolutionsPage from "./pages/solutions-page"
 
+// The first entry is the default route "/"
 const pages = [
+  {
+    name: "AboutPage",
+    title: "About",
+    url: "/"
+  },
   {
     name: "AboutPage",
     title: "About",
@@ -14,15 +20,9 @@ const pages = [
   }
 ]
 
-const defaultPage = {
-  name: "AboutPage",
-  title: "About",
-  url: "/"
-}
-
 const components = {
   "AboutPage": AboutPage,
   "SolutionsPage": SolutionsPage,
 }
 
-export { components, defaultPage, pages }
+export { components, pages }

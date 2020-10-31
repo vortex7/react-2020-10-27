@@ -39,6 +39,7 @@ const getRoutes = () => {
       path: page.url
     }
 
+    // Add exact attribute for the default route "/"
     if(index === 0) {
       routeProps.exact = true
     }

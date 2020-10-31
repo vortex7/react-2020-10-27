@@ -73,6 +73,7 @@ const getMenuItems = () => {
   let menuItems = []
 
   pages.forEach((page, index) => {
+    // Add only pages after the default (index 0). We don't need a menu link for the default route "/"
     if(index > 0) {
       let menuItem = React.createElement(MenuItem, { component: Link, key: index, to: page.url } , page.title)
       menuItems.push(menuItem)
