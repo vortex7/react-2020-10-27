@@ -1,4 +1,4 @@
-import React from "react"
+import React, { Fragment } from "react"
 import PropTypes from "prop-types"
 import clsx from "clsx"
 import { withStyles } from "@material-ui/core/styles"
@@ -64,38 +64,38 @@ const Navigator = (props) => {
         <ListItem className={clsx(classes.firebase, classes.item, classes.itemCategory)}>
           React Web Components 
         </ListItem>
-        {categories.map(({ id, children }) => (
-          <React.Fragment key={id}>
+        {categories.map((category) => (
+          <Fragment key={category.name}>
             <ListItem className={classes.categoryHeader}>
               <ListItemText
                 classes={{
                   primary: classes.categoryHeaderPrimary,
                 }}
               >
-                {id}
+                {category.title}
               </ListItemText>
             </ListItem>
-            {children.map(({ id: childId, icon, active }) => (
+            {category.pages.map((page, active) => (
               <ListItem
                 component={Link} 
-                to={childId} 
-                key={childId}
+                to={page.url} 
+                key={page.name}
                 button
                 className={clsx(classes.item, active && classes.itemActiveItem)}
               >
-                <ListItemIcon className={classes.itemIcon}>{icon}</ListItemIcon>
+                <ListItemIcon className={classes.itemIcon}>{page.icon}</ListItemIcon>
                 <ListItemText
                   classes={{
                     primary: classes.itemPrimary,
                   }}
                 >
-                  {childId}
+                  {page.title}
                 </ListItemText>
               </ListItem>
             ))}
 
             <Divider className={classes.divider} />
-          </React.Fragment>
+          </Fragment>
         ))}
       </List>
     </Drawer>
