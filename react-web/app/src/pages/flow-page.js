@@ -13,18 +13,18 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-const SolutionsPage = () => {
+const FlowPage = () => {
   const classes = useStyles();
 
-  console.log("Solutions")
+  console.log("Flow")
 
   return (
     <Container className={classes.root}>
       <Paper className={classes.paper}>
-        Solutions
+        Flow
       </Paper>
     </Container>
   )
 }
 
-export default SolutionsPage
+export default FlowPage
