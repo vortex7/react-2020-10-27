@@ -87,7 +87,7 @@ export const useActions = (state, dispatch) => {
   }
 
   const getTeamMember = async () => {
-    let data = await postData("/comp-dev-api/find/teammembers", {find: {"_id": state.teamMember._id}, limit: 0})
+    let data = await postData("/react-web/find/teammembers", {find: {"_id": state.teamMember._id}, limit: 0})
 
     let teamMember = {}
     if(data.docs && data.docs.length > 0) {
@@ -98,21 +98,21 @@ export const useActions = (state, dispatch) => {
   }
 
   const createTeamMember = async () => {
-    await postData("/comp-dev-api/create/teammembers", [state.teamMember])
+    await postData("/react-web/create/teammembers", [state.teamMember])
   }
 
   const saveTeamMember = async () => {
-    await postData("/comp-dev-api/update/teammembers", state.teamMember)
+    await postData("/react-web/update/teammembers", state.teamMember)
   }
 
   const deleteTeamMember = async () => {
-    await postData("/comp-dev-api/delete/teammembers", state.teamMember)
+    await postData("/react-web/delete/teammembers", state.teamMember)
   }
 
   const getTeamMembers = async () => {
     let searchValue = state.teamMemberLookup.searchValue
 
-    let data = await postData("/comp-dev-api/list/teammembers", {search: {value: searchValue}, limit: 100, sort: {"timestamp": -1}})
+    let data = await postData("/react-web/list/teammembers", {search: {value: searchValue}, limit: 100, sort: {"timestamp": -1}})
 
     let teamMembers = []
     if(data.docs && data.docs.length > 0) {
@@ -123,7 +123,7 @@ export const useActions = (state, dispatch) => {
   }
 
   const getSystem = async () => {
-    let data = await postData("/comp-dev-api/find/systems", {find: {"_id": state.system._id}, limit: 0})
+    let data = await postData("/react-web/find/systems", {find: {"_id": state.system._id}, limit: 0})
 
     let system = {}
     if(data.docs && data.docs.length > 0) {
@@ -134,7 +134,7 @@ export const useActions = (state, dispatch) => {
   }
 
   const saveSystem = async (systemData) => {
-    await postData("/comp-dev-api/update/systems", systemData)
+    await postData("/react-web/update/systems", systemData)
   }
 
   return {
