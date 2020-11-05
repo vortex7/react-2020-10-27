@@ -6,11 +6,11 @@ const styles = (theme) => ({
   },
 })
 
-const FlowNode = (props) => {
+const FlowAnimation = (props) => {
 
   return (
-    <div>FlowNode</div>
+    <div>FlowAnimation</div>
   )
 }
 
-export default FlowNode
+export default FlowAnimation

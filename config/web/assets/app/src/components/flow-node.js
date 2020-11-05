@@ -12,3 +12,5 @@ const FlowNode = (props) => {
     <div>FlowNode</div>
   )
 }
+
+export default FlowNode

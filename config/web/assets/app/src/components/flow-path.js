@@ -12,3 +12,5 @@ const FlowPath = (props) => {
     <div>FlowPath</div>
   )
 }
+
+export default FlowPath
