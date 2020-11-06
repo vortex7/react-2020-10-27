@@ -57,10 +57,33 @@ const connectors = [
   },
 ]
 
+const animations = [
+  {
+    "from": nodesByName["node-1"],
+    "to": nodesByName["node-2"],
+    "color": "#6600ff",
+    "x": nodesByName["node-1"].x,
+    "y": nodesByName["node-1"].y,
+    "width": 25,
+    "height": 25,
+    "alpha": 0.5,
+  },
+  {
+    "from": nodesByName["node-1"],
+    "to": nodesByName["node-3"],
+    "color": "#6600ff",
+    "x": nodesByName["node-1"].x,
+    "y": nodesByName["node-1"].y,
+    "width": 25,
+    "height": 25,
+    "alpha": 0.5,
+  },
+]
+
 const FlowManager = (props) => {
 
   return (
-    <CanvasComponent nodes={nodes} connectors={connectors} />
+    <CanvasComponent nodes={nodes} connectors={connectors} animations={animations} />
   )
 }
 

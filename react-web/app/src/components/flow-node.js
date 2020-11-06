@@ -1,16 +1,6 @@
-import React from "react"
-import { withStyles } from "@material-ui/core/styles"
-
-const styles = (theme) => ({
-  root: {
-  },
-})
-
-const FlowNode = (props) => {
-
-  return (
-    <div>FlowNode</div>
-  )
+const drawNode = (node, ctx) => {
+  ctx.fillStyle = node.color
+  ctx.fillRect(node.x, node.y, node.width, node.height)
 }
 
-export default FlowNode
+export { drawNode }
