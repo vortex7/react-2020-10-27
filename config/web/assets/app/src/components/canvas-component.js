@@ -23,28 +23,30 @@ const CanvasComponent = ({ nodes, connectors, animations }) => {
   const updateCanvas = () => {
     const canvas = canvasRef.current
 
-    const ctx = canvas.getContext("2d")
-    ctx.clearRect(0, 0, canvas.width, canvas.height)
+    if(canvas) {
+      const ctx = canvas.getContext("2d")
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
 
-    // Draw Nodes
-    nodes.forEach((node) => {
-      drawNode(node, ctx)
-    })
+      // Draw Nodes
+      nodes.forEach((node) => {
+        drawNode(node, ctx)
+      })
 
-    // Draw Connectors
-    connectors.forEach((connector) => {
-      drawConnector(connector, ctx)
-    })
+      // Draw Connectors
+      connectors.forEach((connector) => {
+        drawConnector(connector, ctx)
+      })
 
-    // Draw Animations
-    animations.forEach((animation) => {
-      drawAnimation(animation, ctx)
-    })
+      // Draw Animations
+      animations.forEach((animation) => {
+        drawAnimation(animation, ctx)
+      })
 
-    requestId = requestAnimationFrame(updateCanvas)
+      requestId = requestAnimationFrame(updateCanvas)
 
-    return () => {
-      cancelAnimationFrame(requestId)
+      return () => {
+        cancelAnimationFrame(requestId)
+      }
     }
   }
 

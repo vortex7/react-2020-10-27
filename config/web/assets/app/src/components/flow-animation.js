@@ -3,7 +3,7 @@ const drawAnimation = (animation, ctx) => {
   ctx.fillStyle = animation.color
   ctx.fillRect(animation.x, animation.y, animation.width, animation.height)
 
-  // Compute the x,y en-route to destination
+  // TODO: Use distance and duration to compute perFrameDistance below
   let distance = getDistance(animation.from, animation.to)
 
   let angle = Math.atan2(animation.to.y - animation.from.y, animation.to.x - animation.from.x)
