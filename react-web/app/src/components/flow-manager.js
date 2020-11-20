@@ -14,6 +14,12 @@ const styles = (theme) => ({
 const nodes = [
   {
     "name": "node-1",
+    "title": {
+      "align": "center",
+      "color": "#FFFFFF",
+      "font": "30px Arial",
+      "text": "Node 1",
+    },
     "color": "#900C3F",
     "x": 100,
     "y": 300,
@@ -22,6 +28,12 @@ const nodes = [
   },
   {
     "name": "node-2",
+    "title": {
+      "align": "center",
+      "color": "#FFFFFF",
+      "font": "30px Arial",
+      "text": "Node 2",
+    },
     "color": "#FF5733",
     "x": 600,
     "y": 550,
@@ -31,6 +43,12 @@ const nodes = [
   {
     "name": "node-3",
     "color": "#9F0C3F",
+    "title": {
+      "align": "center",
+      "color": "#FFFFFF",
+      "font": "30px Arial",
+      "text": "Node 3",
+    },
     "x": 600,
     "y": 50,
     "width": 200,
