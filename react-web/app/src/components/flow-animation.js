@@ -3,6 +3,12 @@ const drawAnimation = (animation, ctx) => {
   ctx.fillStyle = animation.color
   ctx.fillRect(animation.x, animation.y, animation.width, animation.height)
 
+  if(animation.image) {
+    let x = animation.x
+    let y = animation.y
+    ctx.drawImage(animation.image, x, y, animation.width, animation.height)
+  }
+
   // TODO: Use distance and duration to compute perFrameDistance below
   let distance = getDistance(animation.from, animation.to)
 

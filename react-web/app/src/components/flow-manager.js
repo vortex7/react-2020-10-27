@@ -10,10 +10,23 @@ const styles = (theme) => ({
   },
 })
 
+const images = [
+  {
+    name: "logo192",
+    src: "../images/logo192.png",
+  }
+]
+
+const imagesByName = {}
+
+images.forEach((image) => {
+  imagesByName[image.name] = image
+})
 
 const nodes = [
   {
     "name": "node-1",
+    "image": imagesByName["logo192"],
     "title": {
       "align": "center",
       "color": "#FFFFFF",
@@ -97,7 +110,7 @@ const animations = [
 const FlowManager = (props) => {
 
   return (
-    <CanvasComponent nodes={nodes} connectors={connectors} animations={animations} />
+    <CanvasComponent images={images} nodes={nodes} connectors={connectors} animations={animations} />
   )
 }
 

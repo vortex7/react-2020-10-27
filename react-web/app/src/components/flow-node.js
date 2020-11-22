@@ -20,40 +20,13 @@ const drawNode = (node, ctx) => {
   }
 
   if(node.image) {
-    /*
-    let x = node.x + (node.width / 10)
-    let y = node.y + ((node.height / 10) + 10)
-    ctx.drawImage(node.image, x, y)
-    let image = new Image()
-    image.onload = () => {
-      // let x = node.x + (node.width / 10)
-      // let y = node.y + ((node.height / 10) + 10)
-      let x = node.x
-      let y = node.y
+    let width = node.width - (node.width / 10)
+    let height = node.height - (node.height / 10)
 
-      //ctx.drawImage(image, x, y)
-      ctx.drawImage(image, 50, 50)
-    }
-    image.src = node.image.src
-    */
+    let x = node.x + ((node.height / 10) / 2)
+    let y = node.y + (node.height / 10)
+    ctx.drawImage(node.image, x, y, width, height)
   }
 }
 
 export { drawNode }
-
-/*
-function draw() {
-  var ctx = document.getElementById('canvas').getContext('2d');
-  var img = new Image();
-  img.onload = function() {
-    ctx.drawImage(img, 0, 0);
-    ctx.beginPath();
-    ctx.moveTo(30, 96);
-    ctx.lineTo(70, 66);
-    ctx.lineTo(103, 76);
-    ctx.lineTo(170, 15);
-    ctx.stroke();
-  };
-  img.src = 'https://mdn.mozillademos.org/files/5395/backdrop.png';
-}
-*/
