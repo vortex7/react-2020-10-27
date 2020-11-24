@@ -3,15 +3,6 @@ const drawAnimation = (animation, ctx) => {
   ctx.fillStyle = animation.color
   ctx.fillRect(animation.x, animation.y, animation.width, animation.height)
 
-  if(animation.image) {
-    let x = animation.x
-    let y = animation.y
-    ctx.drawImage(animation.image.ref.current, x, y, animation.width, animation.height)
-  }
-
-  // TODO: Use distance and duration to compute perFrameDistance below
-  let distance = getDistance(animation.from, animation.to)
-
   // Find center of target notes
   let fromNodeCenter = getCenter(animation.from)
   let toNodeCenter = getCenter(animation.to)
@@ -26,6 +17,15 @@ const drawAnimation = (animation, ctx) => {
     // Position animation y
     animation.y = fromNodeCenter.y - (animation.height / 2)
   }
+
+  if(animation.image) {
+    let x = animation.x
+    let y = animation.y
+    ctx.drawImage(animation.image.ref.current, x, y, animation.width, animation.height)
+  }
+
+  // TODO: Use distance and duration to compute perFrameDistance below
+  let distance = getDistance(animation.from, animation.to)
 
   // Compute angle between from/to nodes
   let angle = Math.atan2(toNodeCenter.y - fromNodeCenter.y, toNodeCenter.x - fromNodeCenter.x)
