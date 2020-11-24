@@ -54,7 +54,9 @@ const CanvasComponent = ({ images, nodes, connectors, animations }) => {
 
       // Draw Animations
       animations.forEach((animation) => {
-        drawAnimation(animation, ctx)
+        if(animation.isActive) {
+          drawAnimation(animation, ctx)
+        }
       })
 
       requestId = requestAnimationFrame(updateCanvas)
@@ -67,7 +69,7 @@ const CanvasComponent = ({ images, nodes, connectors, animations }) => {
 
   return (
     <>
-      {images.map((image, i) => (
+      {images.map((image) => (
         <img src={imagePath(`./${image.src}`)} ref={image.ref} className={classes.images} />
       ))}
         

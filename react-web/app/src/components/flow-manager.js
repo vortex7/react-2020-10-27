@@ -1,4 +1,6 @@
 import React from "react"
+import Button from "@material-ui/core/Button"
+import Grid from "@material-ui/core/Grid"
 import { withStyles } from "@material-ui/core/styles"
 
 import { useState } from "react"
@@ -104,6 +106,7 @@ const animations = [
     "width": 25,
     "height": 25,
     "alpha": 0.5,
+    "isActive": false,
   },
   {
     "from": nodesByName["node-1"],
@@ -113,13 +116,38 @@ const animations = [
     "width": 25,
     "height": 25,
     "alpha": 0.5,
+    "isActive": false,
   },
 ]
+
+const handleAnimationStart = () => {
+  animations.forEach((animation) => {
+    animation.isActive = true
+  })
+}
+
+const handleAnimationStop = () => {
+  animations.forEach((animation) => {
+    animation.isActive = false
+  })
+}
 
 const FlowManager = (props) => {
 
   return (
-    <CanvasComponent images={images} nodes={nodes} connectors={connectors} animations={animations} />
+    <>
+      <Grid container>
+        <Grid item xs={6}>
+          <Button variant="contained" color="primary" onClick={handleAnimationStart}>Start</Button>
+        </Grid>
+        <Grid item xs={6}>
+          <Button variant="contained" color="secondary" onClick={handleAnimationStop}>Stop</Button>
+        </Grid>
+        <Grid item xs={12}>
+          <CanvasComponent images={images} nodes={nodes} connectors={connectors} animations={animations} />
+        </Grid>
+      </Grid>
+    </>
   )
 }
 
