@@ -6,7 +6,7 @@ const drawAnimation = (animation, ctx) => {
   if(animation.image) {
     let x = animation.x
     let y = animation.y
-    ctx.drawImage(animation.image, x, y, animation.width, animation.height)
+    ctx.drawImage(animation.image.ref.current, x, y, animation.width, animation.height)
   }
 
   // TODO: Use distance and duration to compute perFrameDistance below

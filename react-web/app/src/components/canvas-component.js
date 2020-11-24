@@ -1,33 +1,26 @@
-import React, { useContext, useEffect, useRef, useState } from "react"
+import React, { createRef, useContext, useEffect, useRef, useState } from "react"
 import { drawNode } from "./flow-node"
 import { drawConnector } from "./flow-connector"
 import { drawAnimation } from "./flow-animation"
 import { makeStyles } from "@material-ui/core/styles"
 
-import logo from '../images/logo192.png'
-
-console.log(logo)
+const imagePath = require.context("../images", true, /.png$/);
 
 const useStyles = makeStyles({
-  logo: {
+  images: {
     display: "none",
   },
 })
 
-
-const styles = (theme) => ({
-  logo: {
-    display: "none",
-  },
-})
-
-const CanvasComponent = ({ nodes, connectors, animations }) => {
+const CanvasComponent = ({ images, nodes, connectors, animations }) => {
   const [canvasLoaded, setCanvasLoaded] = useState(false)
   const classes = useStyles()
 
   const canvasRef = useRef(null)
-  const logoRef = useRef(null)
 
+  images.forEach((image) => {
+    image.ref = createRef()
+  })
 
   useEffect(() => {
     // Load canvas
@@ -43,7 +36,6 @@ const CanvasComponent = ({ nodes, connectors, animations }) => {
 
   const updateCanvas = () => {
     const canvas = canvasRef.current
-    const logo = logoRef.current
 
     if(canvas) {
       const ctx = canvas.getContext("2d")
@@ -52,7 +44,6 @@ const CanvasComponent = ({ nodes, connectors, animations }) => {
 
       // Draw Nodes
       nodes.forEach((node) => {
-        node.image = logo
         drawNode(node, ctx)
       })
 
@@ -63,7 +54,6 @@ const CanvasComponent = ({ nodes, connectors, animations }) => {
 
       // Draw Animations
       animations.forEach((animation) => {
-        animation.image = logo
         drawAnimation(animation, ctx)
       })
 
@@ -77,7 +67,9 @@ const CanvasComponent = ({ nodes, connectors, animations }) => {
 
   return (
     <>
-      <img src={logo} ref={logoRef} className={classes.logo} />
+      {images.map((image, i) => (
+        <img src={imagePath(`./${image.src}`)} ref={image.ref} className={classes.images} />
+      ))}
         
       <canvas ref={canvasRef} width={1000} height={1000}/>
     </>

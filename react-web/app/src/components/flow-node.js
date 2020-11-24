@@ -25,7 +25,8 @@ const drawNode = (node, ctx) => {
 
     let x = node.x + ((node.height / 10) / 2)
     let y = node.y + (node.height / 10)
-    ctx.drawImage(node.image, x, y, width, height)
+    
+    ctx.drawImage(node.image.ref.current, x, y, width, height)
   }
 }
 

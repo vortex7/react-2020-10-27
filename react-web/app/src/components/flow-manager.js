@@ -10,19 +10,22 @@ const styles = (theme) => ({
   },
 })
 
+// Create image array
 const images = [
   {
     name: "logo192",
-    src: "../images/logo192.png",
+    src: "logo192.png",
   }
 ]
 
+// Create imagesByName dictionary
 const imagesByName = {}
 
 images.forEach((image) => {
   imagesByName[image.name] = image
 })
 
+// Create nodes array
 const nodes = [
   {
     "name": "node-1",
@@ -41,6 +44,7 @@ const nodes = [
   },
   {
     "name": "node-2",
+    "image": imagesByName["logo192"],
     "title": {
       "align": "center",
       "color": "#FFFFFF",
@@ -55,6 +59,7 @@ const nodes = [
   },
   {
     "name": "node-3",
+    "image": imagesByName["logo192"],
     "color": "#9F0C3F",
     "title": {
       "align": "center",
@@ -69,6 +74,7 @@ const nodes = [
   },
 ]
 
+// Create nodesByName dictionary
 const nodesByName = {}
 
 nodes.forEach((node) => {
@@ -88,11 +94,13 @@ const connectors = [
   },
 ]
 
+// Create animations array
 const animations = [
   {
     "from": nodesByName["node-1"],
     "to": nodesByName["node-2"],
     "color": "#6600ff",
+    "image": imagesByName["logo192"],
     "width": 25,
     "height": 25,
     "alpha": 0.5,
@@ -101,6 +109,7 @@ const animations = [
     "from": nodesByName["node-1"],
     "to": nodesByName["node-3"],
     "color": "#6600ff",
+    "image": imagesByName["logo192"],
     "width": 25,
     "height": 25,
     "alpha": 0.5,
