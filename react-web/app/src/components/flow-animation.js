@@ -25,7 +25,7 @@ const drawAnimation = (animation, ctx) => {
   }
 
   // TODO: Use distance and duration to compute perFrameDistance below
-  let distance = getDistance(animation.from, animation.to)
+  // let distance = getDistance(animation.from, animation.to)
 
   // Compute angle between from/to nodes
   let angle = Math.atan2(toNodeCenter.y - fromNodeCenter.y, toNodeCenter.x - fromNodeCenter.x)

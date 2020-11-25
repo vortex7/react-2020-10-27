@@ -18,8 +18,6 @@ const styles = (theme) => ({
 })
 
 const Content = (props) => {
-  const { classes } = props
-
   return (
     <Switch>
       {getRoutes()}

@@ -1,4 +1,4 @@
-import React, { createRef, useContext, useEffect, useRef, useState } from "react"
+import React, { createRef, useEffect, useRef, useState } from "react"
 import { drawNode } from "./flow-node"
 import { drawConnector } from "./flow-connector"
 import { drawAnimation } from "./flow-animation"
@@ -30,7 +30,7 @@ const CanvasComponent = ({ images, nodes, connectors, animations }) => {
       setCanvasLoaded(true)
       updateCanvas()
     }
-  })
+  }, [canvasLoaded])
 
   let requestId = null
 
@@ -67,13 +67,46 @@ const CanvasComponent = ({ images, nodes, connectors, animations }) => {
     }
   }
 
+  const contains = (point, node) => {
+    if((point.x >= node.x && point.x <= node.x + node.width) &&
+       (point.y >= node.y && point.y <= node.y + node.height)) {
+      return true
+    }
+    else {
+      return false
+    }
+  }
+
+  const handleClick = (event) => {
+    const canvas = canvasRef.current
+    const canvasRect = canvas.getBoundingClientRect()
+
+    const x = event.clientX - canvasRect.left
+    const y = event.clientY - canvasRect.top
+
+    const point = {
+      x: x,
+      y: y,
+    }
+
+    nodes.forEach((node) => {
+      if(contains(point, node)) {
+        console.log(node.name)
+        if(node.handleClick) {
+          node.handleClick()
+        }
+      }
+    })
+
+  }
+
   return (
     <>
-      {images.map((image) => (
-        <img src={imagePath(`./${image.src}`)} ref={image.ref} className={classes.images} />
+      {images.map((image, index) => (
+        <img src={imagePath(`./${image.src}`)} ref={image.ref} key={index} className={classes.images} alt={image.name} />
       ))}
         
-      <canvas ref={canvasRef} width={1000} height={1000}/>
+      <canvas ref={canvasRef} onClick={handleClick} width={1000} height={1000}/>
     </>
   )
 }

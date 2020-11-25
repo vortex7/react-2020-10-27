@@ -43,6 +43,9 @@ const nodes = [
     "y": 300,
     "width": 200,
     "height": 200,
+    "handleClick": () => {
+      alert("node-1")
+    },
   },
   {
     "name": "node-2",
@@ -58,6 +61,9 @@ const nodes = [
     "y": 550,
     "width": 200,
     "height": 200,
+    "handleClick": () => {
+      alert("node-2")
+    },
   },
   {
     "name": "node-3",
@@ -73,6 +79,9 @@ const nodes = [
     "y": 50,
     "width": 200,
     "height": 200,
+    "handleClick": () => {
+      alert("node-3")
+    },
   },
 ]
 
