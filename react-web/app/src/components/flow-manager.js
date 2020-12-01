@@ -108,6 +108,7 @@ const connectors = [
 // Create animations array
 const animations = [
   {
+    "name": "node-1-to-node-2",
     "from": nodesByName["node-1"],
     "to": nodesByName["node-2"],
     "color": "#6600ff",
@@ -118,6 +119,7 @@ const animations = [
     "isActive": false,
   },
   {
+    "name": "node-1-to-node-3",
     "from": nodesByName["node-1"],
     "to": nodesByName["node-3"],
     "color": "#6600ff",
@@ -129,15 +131,19 @@ const animations = [
   },
 ]
 
-const handleAnimationStart = () => {
+const handleAnimationStart = (animationName) => {
   animations.forEach((animation) => {
-    animation.isActive = true
+    if(animation.name === animationName) {
+      animation.isActive = true
+    }
   })
 }
 
-const handleAnimationStop = () => {
+const handleAnimationStop = (animationName) => {
   animations.forEach((animation) => {
-    animation.isActive = false
+    if(animation.name === animationName) {
+      animation.isActive = false
+    }
   })
 }
 
@@ -147,10 +153,12 @@ const FlowManager = (props) => {
     <>
       <Grid container>
         <Grid item xs={6}>
-          <Button variant="contained" color="primary" onClick={handleAnimationStart}>Start</Button>
+          <Button variant="contained" color="primary" onClick={() => { handleAnimationStart("node-1-to-node-3") }}>Start Animation One</Button>
+          <Button variant="contained" color="secondary" onClick={() => { handleAnimationStop("node-1-to-node-3") }}>Stop Animation One</Button>
         </Grid>
         <Grid item xs={6}>
-          <Button variant="contained" color="secondary" onClick={handleAnimationStop}>Stop</Button>
+          <Button variant="contained" color="primary" onClick={() => { handleAnimationStart("node-1-to-node-2") }}>Start Animation Two</Button>
+          <Button variant="contained" color="secondary" onClick={() => { handleAnimationStop("node-1-to-node-2") }}>Stop Animation Two</Button>
         </Grid>
         <Grid item xs={12}>
           <CanvasComponent images={images} nodes={nodes} connectors={connectors} animations={animations} />
