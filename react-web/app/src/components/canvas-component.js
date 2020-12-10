@@ -43,7 +43,6 @@ const CanvasComponent = ({ canvasOptions, images, nodes, controls, connectors, a
       ctx.beginPath()
 
       // Set scale
-      console.log(canvasOptions.scale)
       ctx.scale(canvasOptions.scale, canvasOptions.scale)
 
       // Draw Nodes
