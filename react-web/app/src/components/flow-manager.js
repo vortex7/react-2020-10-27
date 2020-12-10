@@ -35,6 +35,7 @@ images.forEach((image) => {
 const nodes = [
   {
     "name": "node-1",
+    "type": "node",
     "image": imagesByName["logo192"],
     "title": {
       "align": "center",
@@ -53,6 +54,7 @@ const nodes = [
   },
   {
     "name": "node-2",
+    "type": "node",
     "image": imagesByName["logo192"],
     "title": {
       "align": "center",
@@ -71,6 +73,7 @@ const nodes = [
   },
   {
     "name": "node-3",
+    "type": "node",
     "image": imagesByName["logo192"],
     "color": "#9F0C3F",
     "title": {
@@ -87,12 +90,9 @@ const nodes = [
       alert("node-3")
     },
   },
-]
-
-// Create controls array
-const controls = [
   {
     "name": "zoom-in",
+    "type": "control",
     "image": imagesByName["logo192"],
     "color": "#FFFFFF",
     "x": 900,
@@ -107,6 +107,7 @@ const controls = [
   },
   {
     "name": "zoom-out",
+    "type": "control",
     "image": imagesByName["logo192"],
     "color": "#FFFFFF",
     "x": 900,
@@ -197,7 +198,7 @@ const FlowManager = (props) => {
           <Button variant="contained" color="secondary" onClick={() => { handleAnimationStop("node-1-to-node-2") }}>Stop Animation Two</Button>
         </Grid>
         <Grid item xs={12}>
-          <CanvasComponent canvasOptions={canvasOptions} images={images} nodes={nodes} controls={controls} connectors={connectors} animations={animations} />
+          <CanvasComponent canvasOptions={canvasOptions} images={images} nodes={nodes} connectors={connectors} animations={animations} />
         </Grid>
       </Grid>
     </>

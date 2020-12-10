@@ -12,7 +12,7 @@ const useStyles = makeStyles({
   },
 })
 
-const CanvasComponent = ({ canvasOptions, images, nodes, controls, connectors, animations }) => {
+const CanvasComponent = ({ canvasOptions, images, nodes, connectors, animations }) => {
   const [canvasLoaded, setCanvasLoaded] = useState(false)
   const classes = useStyles()
 
@@ -47,7 +47,9 @@ const CanvasComponent = ({ canvasOptions, images, nodes, controls, connectors, a
 
       // Draw Nodes
       nodes.forEach((node) => {
-        drawNode(node, ctx)
+        if(node.type === "node") {
+          drawNode(node, ctx)
+        }
       })
 
       // Draw Connectors
@@ -66,8 +68,10 @@ const CanvasComponent = ({ canvasOptions, images, nodes, controls, connectors, a
       ctx.setTransform(1, 0, 0, 1, 0, 0)
 
       // Draw Controls
-      controls.forEach((control) => {
-        drawNode(control, ctx)
+      nodes.forEach((node) => {
+        if(node.type === "control") {
+          drawNode(node, ctx)
+        }
       })
 
       requestId = requestAnimationFrame(updateCanvas)
@@ -79,13 +83,25 @@ const CanvasComponent = ({ canvasOptions, images, nodes, controls, connectors, a
   }
 
   const contains = (point, node) => {
-    if((point.x >= node.x && point.x <= node.x + node.width) &&
-       (point.y >= node.y && point.y <= node.y + node.height)) {
-      return true
+    let doesContain = false
+
+    // Handle canvas scale for type "node"
+    if(node.type == "node") {
+      if((point.x >= (node.x * canvasOptions.scale) && point.x <= (node.x * canvasOptions.scale) + (node.width * canvasOptions.scale)) &&
+         (point.y >= (node.y * canvasOptions.scale) && point.y <= (node.y * canvasOptions.scale) + (node.height * canvasOptions.scale))) {
+        doesContain = true
+      }
     }
-    else {
-      return false
+
+    // Controls are never scaled, so no scale required
+    if(node.type == "control") {
+      if((point.x >= node.x && point.x <= node.x + node.width) &&
+         (point.y >= node.y && point.y <= node.y + node.height)) {
+        doesContain = true
+      }
     }
+
+    return doesContain
   }
 
   const handleClick = (event) => {
@@ -108,16 +124,6 @@ const CanvasComponent = ({ canvasOptions, images, nodes, controls, connectors, a
         }
       }
     })
-
-    controls.forEach((control) => {
-      if(contains(point, control)) {
-        console.log(control.name)
-        if(control.handleClick) {
-          control.handleClick()
-        }
-      }
-    })
-
   }
 
   return (
