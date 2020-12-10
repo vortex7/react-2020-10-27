@@ -4,7 +4,7 @@ import { drawConnector } from "./flow-connector"
 import { drawAnimation } from "./flow-animation"
 import { makeStyles } from "@material-ui/core/styles"
 
-const imagePath = require.context("../images", true, /.png$/);
+const imagePath = require.context("../images", true, /.png$/)
 
 const useStyles = makeStyles({
   images: {
@@ -12,7 +12,7 @@ const useStyles = makeStyles({
   },
 })
 
-const CanvasComponent = ({ images, nodes, connectors, animations }) => {
+const CanvasComponent = ({ canvasOptions, images, nodes, controls, connectors, animations }) => {
   const [canvasLoaded, setCanvasLoaded] = useState(false)
   const classes = useStyles()
 
@@ -42,6 +42,10 @@ const CanvasComponent = ({ images, nodes, connectors, animations }) => {
       ctx.clearRect(0, 0, canvas.width, canvas.height)
       ctx.beginPath()
 
+      // Set scale
+      console.log(canvasOptions.scale)
+      ctx.scale(canvasOptions.scale, canvasOptions.scale)
+
       // Draw Nodes
       nodes.forEach((node) => {
         drawNode(node, ctx)
@@ -57,6 +61,14 @@ const CanvasComponent = ({ images, nodes, connectors, animations }) => {
         if(animation.isActive) {
           drawAnimation(animation, ctx)
         }
+      })
+ 
+      // Reset current transformation matrix to the identity matrix
+      ctx.setTransform(1, 0, 0, 1, 0, 0)
+
+      // Draw Controls
+      controls.forEach((control) => {
+        drawNode(control, ctx)
       })
 
       requestId = requestAnimationFrame(updateCanvas)
@@ -94,6 +106,15 @@ const CanvasComponent = ({ images, nodes, connectors, animations }) => {
         console.log(node.name)
         if(node.handleClick) {
           node.handleClick()
+        }
+      }
+    })
+
+    controls.forEach((control) => {
+      if(contains(point, control)) {
+        console.log(control.name)
+        if(control.handleClick) {
+          control.handleClick()
         }
       }
     })
