@@ -12,8 +12,17 @@ const styles = (theme) => ({
   },
 })
 
-let canvasOptions = {
-  scale: 1.0
+let canvasState = {
+  scale: 1.0,
+  isDown: false,
+  mousePosition: {
+    x: 0,
+    y: 0,
+  },
+  pan: {
+    x: 0,
+    y: 0,
+  }
 }
 
 // Create image array
@@ -101,8 +110,8 @@ const nodes = [
     "height": 100,
     "handleClick": () => {
       console.log("zoom in")
-      canvasOptions.scale = canvasOptions.scale * 2
-      console.log(canvasOptions.scale)
+      canvasState.scale = canvasState.scale * 1.2
+      console.log(canvasState.scale)
     },
   },
   {
@@ -116,8 +125,8 @@ const nodes = [
     "height": 100,
     "handleClick": () => {
       console.log("zoom out")
-      canvasOptions.scale = canvasOptions.scale * 0.5
-      console.log(canvasOptions.scale)
+      canvasState.scale = canvasState.scale * 0.8333
+      console.log(canvasState.scale)
     },
   },
 ]
@@ -198,7 +207,7 @@ const FlowManager = (props) => {
           <Button variant="contained" color="secondary" onClick={() => { handleAnimationStop("node-1-to-node-2") }}>Stop Animation Two</Button>
         </Grid>
         <Grid item xs={12}>
-          <CanvasComponent canvasOptions={canvasOptions} images={images} nodes={nodes} connectors={connectors} animations={animations} />
+          <CanvasComponent canvasState={canvasState} images={images} nodes={nodes} connectors={connectors} animations={animations} />
         </Grid>
       </Grid>
     </>

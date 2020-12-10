@@ -12,7 +12,7 @@ const useStyles = makeStyles({
   },
 })
 
-const CanvasComponent = ({ canvasOptions, images, nodes, connectors, animations }) => {
+const CanvasComponent = ({ canvasState, images, nodes, connectors, animations }) => {
   const [canvasLoaded, setCanvasLoaded] = useState(false)
   const classes = useStyles()
 
@@ -43,7 +43,10 @@ const CanvasComponent = ({ canvasOptions, images, nodes, connectors, animations 
       ctx.beginPath()
 
       // Set scale
-      ctx.scale(canvasOptions.scale, canvasOptions.scale)
+      ctx.scale(canvasState.scale, canvasState.scale)
+
+      // Set pan
+      ctx.translate(canvasState.pan.x, canvasState.pan.y)
 
       // Draw Nodes
       nodes.forEach((node) => {
@@ -64,7 +67,7 @@ const CanvasComponent = ({ canvasOptions, images, nodes, connectors, animations 
         }
       })
  
-      // Reset current transformation matrix to the identity matrix
+      // Reset scale
       ctx.setTransform(1, 0, 0, 1, 0, 0)
 
       // Draw Controls
@@ -87,8 +90,13 @@ const CanvasComponent = ({ canvasOptions, images, nodes, connectors, animations 
 
     // Handle canvas scale for type "node"
     if(node.type == "node") {
-      if((point.x >= (node.x * canvasOptions.scale) && point.x <= (node.x * canvasOptions.scale) + (node.width * canvasOptions.scale)) &&
-         (point.y >= (node.y * canvasOptions.scale) && point.y <= (node.y * canvasOptions.scale) + (node.height * canvasOptions.scale))) {
+      let nodeX = (node.x * canvasState.scale) + canvasState.pan.x
+      let nodeY = (node.y * canvasState.scale) + canvasState.pan.y
+      let nodeWidth = node.width * canvasState.scale
+      let nodeHeight = node.height * canvasState.scale
+
+      if((point.x >= nodeX && point.x <= nodeX + nodeWidth) &&
+         (point.y >= nodeY && point.y <= nodeY + nodeHeight)) {
         doesContain = true
       }
     }
@@ -105,16 +113,10 @@ const CanvasComponent = ({ canvasOptions, images, nodes, connectors, animations 
   }
 
   const handleClick = (event) => {
-    const canvas = canvasRef.current
-    const canvasRect = canvas.getBoundingClientRect()
+    event.preventDefault()
+    event.stopPropagation()
 
-    const x = event.clientX - canvasRect.left
-    const y = event.clientY - canvasRect.top
-
-    const point = {
-      x: x,
-      y: y,
-    }
+    const point = getPoint(event)
 
     nodes.forEach((node) => {
       if(contains(point, node)) {
@@ -126,13 +128,95 @@ const CanvasComponent = ({ canvasOptions, images, nodes, connectors, animations 
     })
   }
 
+  const handleMouseDown = (event) => {
+    console.log("mousedown")
+
+    event.preventDefault()
+    event.stopPropagation()
+
+    canvasState.mousePosition = getPoint(event)
+    canvasState.isDown = true
+  }
+
+  const handleMouseUp = (event) => {
+    console.log("mouseup")
+
+    event.preventDefault()
+    event.stopPropagation()
+
+    canvasState.isDown = false
+  }
+
+  const handleMouseOut = (event) => {
+    console.log("mouseout")
+
+    event.preventDefault()
+    event.stopPropagation()
+
+    canvasState.isDown = false
+  }
+
+  const handleMouseMove = (event) => {
+    console.log("mousemove")
+    if(!canvasState.isDown){
+      return
+    }
+
+    event.preventDefault()
+    event.stopPropagation()
+
+    const canvas = canvasRef.current
+    const ctx = canvas.getContext("2d")
+
+    const point = getPoint(event)
+
+    // Get the delta (change) in mousePosition
+    var deltaX = point.x - canvasState.mousePosition.x
+    var deltaY = point.y - canvasState.mousePosition.y
+
+    console.log({
+      deltaX: deltaX,
+      deltaY: deltaY,
+    })
+
+    // TODO: multiply deltaX times the scale???
+    canvasState.pan.x += deltaX
+    canvasState.pan.y += deltaY
+
+    // Update canvasState.mousePosition to current point
+    canvasState.mousePosition = point
+  }
+
+  const getPoint = (event) => {
+    const canvas = canvasRef.current
+    const canvasRect = canvas.getBoundingClientRect()
+
+    const x = event.clientX - canvasRect.left
+    const y = event.clientY - canvasRect.top
+
+    const point = {
+      x: x,
+      y: y,
+    }
+
+    return point
+  }
+
   return (
     <>
       {images.map((image, index) => (
         <img src={imagePath(`./${image.src}`)} ref={image.ref} key={index} className={classes.images} alt={image.name} />
       ))}
         
-      <canvas ref={canvasRef} onClick={handleClick} width={1000} height={1000}/>
+      <canvas 
+        ref={canvasRef}
+        onClick={handleClick}
+        onMouseDown={handleMouseDown}
+        onMouseUp={handleMouseUp}
+        onMouseOut={handleMouseOut}
+        onMouseMove={handleMouseMove}
+        width={1000}
+        height={1000}/>
     </>
   )
 }
