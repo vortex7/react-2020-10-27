@@ -94,7 +94,7 @@ const controls = [
   {
     "name": "zoom-in",
     "image": imagesByName["logo192"],
-    "color": "",
+    "color": "#FFFFFF",
     "x": 900,
     "y": 0,
     "width": 100,
@@ -108,7 +108,7 @@ const controls = [
   {
     "name": "zoom-out",
     "image": imagesByName["logo192"],
-    "color": "",
+    "color": "#FFFFFF",
     "x": 900,
     "y": 100,
     "width": 100,
