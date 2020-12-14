@@ -57,6 +57,7 @@ const nodes = [
     "y": 300,
     "width": 200,
     "height": 200,
+    "isHovering": false,
     "handleClick": () => {
       alert("node-1")
     },
@@ -76,6 +77,7 @@ const nodes = [
     "y": 550,
     "width": 200,
     "height": 200,
+    "isHovering": false,
     "handleClick": () => {
       alert("node-2")
     },
@@ -95,6 +97,7 @@ const nodes = [
     "y": 50,
     "width": 200,
     "height": 200,
+    "isHovering": false,
     "handleClick": () => {
       alert("node-3")
     },
@@ -108,6 +111,7 @@ const nodes = [
     "y": 0,
     "width": 100,
     "height": 100,
+    "isHovering": false,
     "handleClick": () => {
       console.log("zoom in")
       canvasState.scale = canvasState.scale * 1.2
@@ -123,6 +127,7 @@ const nodes = [
     "y": 100,
     "width": 100,
     "height": 100,
+    "isHovering": false,
     "handleClick": () => {
       console.log("zoom out")
       canvasState.scale = canvasState.scale * 0.8333

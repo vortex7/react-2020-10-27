@@ -24,8 +24,6 @@ const CanvasComponent = ({ canvasState, images, nodes, connectors, animations })
 
   useEffect(() => {
     // Load canvas
-    console.log("Loading canvas...")
-
     if(!canvasLoaded) {
       setCanvasLoaded(true)
       updateCanvas()
@@ -42,11 +40,11 @@ const CanvasComponent = ({ canvasState, images, nodes, connectors, animations })
       ctx.clearRect(0, 0, canvas.width, canvas.height)
       ctx.beginPath()
 
-      // Set scale
-      ctx.scale(canvasState.scale, canvasState.scale)
-
       // Set pan
       ctx.translate(canvasState.pan.x, canvasState.pan.y)
+
+      // Set scale
+      ctx.scale(canvasState.scale, canvasState.scale)
 
       // Draw Nodes
       nodes.forEach((node) => {
@@ -129,8 +127,6 @@ const CanvasComponent = ({ canvasState, images, nodes, connectors, animations })
   }
 
   const handleMouseDown = (event) => {
-    console.log("mousedown")
-
     event.preventDefault()
     event.stopPropagation()
 
@@ -139,8 +135,6 @@ const CanvasComponent = ({ canvasState, images, nodes, connectors, animations })
   }
 
   const handleMouseUp = (event) => {
-    console.log("mouseup")
-
     event.preventDefault()
     event.stopPropagation()
 
@@ -148,8 +142,6 @@ const CanvasComponent = ({ canvasState, images, nodes, connectors, animations })
   }
 
   const handleMouseOut = (event) => {
-    console.log("mouseout")
-
     event.preventDefault()
     event.stopPropagation()
 
@@ -157,11 +149,6 @@ const CanvasComponent = ({ canvasState, images, nodes, connectors, animations })
   }
 
   const handleMouseMove = (event) => {
-    console.log("mousemove")
-    if(!canvasState.isDown){
-      return
-    }
-
     event.preventDefault()
     event.stopPropagation()
 
@@ -170,21 +157,27 @@ const CanvasComponent = ({ canvasState, images, nodes, connectors, animations })
 
     const point = getPoint(event)
 
-    // Get the delta (change) in mousePosition
-    var deltaX = point.x - canvasState.mousePosition.x
-    var deltaY = point.y - canvasState.mousePosition.y
+    if(canvasState.isDown){
+      // Get the delta (change) in mousePosition
+      let deltaX = point.x - canvasState.mousePosition.x
+      let deltaY = point.y - canvasState.mousePosition.y
 
-    console.log({
-      deltaX: deltaX,
-      deltaY: deltaY,
-    })
-
-    // TODO: multiply deltaX times the scale???
-    canvasState.pan.x += deltaX
-    canvasState.pan.y += deltaY
+      canvasState.pan.x += deltaX
+      canvasState.pan.y += deltaY
+    }
 
     // Update canvasState.mousePosition to current point
     canvasState.mousePosition = point
+
+    // Set isHovering for nodes affected
+    nodes.forEach((node) => {
+      if(contains(point, node)) {
+        node.isHovering = true
+      }
+      else {
+        node.isHovering = false
+      }
+    })
   }
 
   const getPoint = (event) => {

@@ -28,6 +28,10 @@ const drawNode = (node, ctx) => {
     
     ctx.drawImage(node.image.ref.current, x, y, width, height)
   }
+
+  if(node.isHovering) {
+    console.log(`Hovering over ${node.name}`)
+  }
 }
 
 export { drawNode }
