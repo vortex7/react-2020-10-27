@@ -46,6 +46,8 @@ const nodes = [
     "name": "node-1",
     "type": "node",
     "image": imagesByName["logo192"],
+    "addImage": imagesByName["logo192"],
+    "trashImage": imagesByName["logo192"],
     "title": {
       "align": "center",
       "color": "#FFFFFF",
@@ -61,11 +63,19 @@ const nodes = [
     "handleClick": () => {
       alert("node-1")
     },
+    "handleAddClick": () => {
+      alert("node-1 add")
+    },
+    "handleDeleteClick": () => {
+      alert("node-1 delete")
+    },
   },
   {
     "name": "node-2",
     "type": "node",
     "image": imagesByName["logo192"],
+    "addImage": imagesByName["logo192"],
+    "trashImage": imagesByName["logo192"],
     "title": {
       "align": "center",
       "color": "#FFFFFF",
@@ -81,11 +91,19 @@ const nodes = [
     "handleClick": () => {
       alert("node-2")
     },
+    "handleAddClick": () => {
+      alert("node-2 add")
+    },
+    "handleDeleteClick": () => {
+      alert("node-2 delete")
+    },
   },
   {
     "name": "node-3",
     "type": "node",
     "image": imagesByName["logo192"],
+    "addImage": imagesByName["logo192"],
+    "trashImage": imagesByName["logo192"],
     "color": "#9F0C3F",
     "title": {
       "align": "center",
@@ -100,6 +118,12 @@ const nodes = [
     "isHovering": false,
     "handleClick": () => {
       alert("node-3")
+    },
+    "handleAddClick": () => {
+      alert("node-3 add")
+    },
+    "handleDeleteClick": () => {
+      alert("node-3 delete")
     },
   },
   {

@@ -86,8 +86,15 @@ const CanvasComponent = ({ canvasState, images, nodes, connectors, animations })
   const contains = (point, node) => {
     let doesContain = false
 
-    // Handle canvas scale for type "node"
-    if(node.type == "node") {
+    if(node.type == "control") {
+      // Controls are never scaled
+      if((point.x >= node.x && point.x <= node.x + node.width) &&
+         (point.y >= node.y && point.y <= node.y + node.height)) {
+        doesContain = true
+      }
+    }
+    else {
+      // Handle canvas scale for all other nodes
       let nodeX = (node.x * canvasState.scale) + canvasState.pan.x
       let nodeY = (node.y * canvasState.scale) + canvasState.pan.y
       let nodeWidth = node.width * canvasState.scale
@@ -95,14 +102,6 @@ const CanvasComponent = ({ canvasState, images, nodes, connectors, animations })
 
       if((point.x >= nodeX && point.x <= nodeX + nodeWidth) &&
          (point.y >= nodeY && point.y <= nodeY + nodeHeight)) {
-        doesContain = true
-      }
-    }
-
-    // Controls are never scaled, so no scale required
-    if(node.type == "control") {
-      if((point.x >= node.x && point.x <= node.x + node.width) &&
-         (point.y >= node.y && point.y <= node.y + node.height)) {
         doesContain = true
       }
     }
@@ -117,7 +116,19 @@ const CanvasComponent = ({ canvasState, images, nodes, connectors, animations })
     const point = getPoint(event)
 
     nodes.forEach((node) => {
-      if(contains(point, node)) {
+      if(node.addButton && contains(point, node.addButton)) {
+        console.log(node)
+        if(node.handleAddClick) {
+          node.handleAddClick()
+        }
+      }
+      else if(node.deleteButton && contains(point, node.deleteButton)) {
+        console.log(node)
+        if(node.handleDeleteClick) {
+          node.handleDeleteClick()
+        }
+      }
+      else if(contains(point, node)) {
         console.log(node.name)
         if(node.handleClick) {
           node.handleClick()
