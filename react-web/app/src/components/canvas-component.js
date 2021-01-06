@@ -1,4 +1,7 @@
 import React, { createRef, useEffect, useRef, useState } from "react"
+import Button from "@material-ui/core/Button"
+import Grid from "@material-ui/core/Grid"
+
 import { drawNode } from "./flow-node"
 import { drawConnector } from "./flow-connector"
 import { drawAnimation } from "./flow-animation"
@@ -192,6 +195,22 @@ const CanvasComponent = ({ canvasState, images, nodes, connectors, animations })
     })
   }
 
+  const takeScreenshot = () => {
+    const canvas = canvasRef.current
+    const mirror = mirrorRef.current
+    var dataURL = canvas.toDataURL("image/png")
+    mirror.src = dataURL
+
+    var link = document.createElement("a")
+    link.download = "screenshot.png"
+    link.href = mirror.src
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+
+    mirror.src = ""
+  }
+
   const getPoint = (event) => {
     const canvas = canvasRef.current
     const canvasRect = canvas.getBoundingClientRect()
@@ -213,20 +232,27 @@ const CanvasComponent = ({ canvasState, images, nodes, connectors, animations })
         <img src={imagePath(`./${image.src}`)} ref={image.ref} key={index} className={classes.images} alt={image.name} />
       ))}
         
-      <canvas 
-        ref={canvasRef}
-        onClick={handleClick}
-        onMouseDown={handleMouseDown}
-        onMouseUp={handleMouseUp}
-        onMouseOut={handleMouseOut}
-        onMouseMove={handleMouseMove}
-        width={1000}
-        height={1000}/>
+      <div style={{position: "relative", margin: 0, padding: 0, width: 1000, height: 1000}}>
+        <img 
+          ref={mirrorRef}
+          style={{position: "absolute", left: 0, top: 0}}
+          width={1000}
+          height={1000}/>
 
-      <image 
-        ref={mirrorRef}
-        width={1000}
-        height={1000}/>
+        <canvas 
+          ref={canvasRef}
+          style={{position: "absolute", left: 0, top: 0}}
+          onClick={handleClick}
+          onMouseDown={handleMouseDown}
+          onMouseUp={handleMouseUp}
+          onMouseOut={handleMouseOut}
+          onMouseMove={handleMouseMove}
+          width={1000}
+          height={1000}/>
+      </div>
+      <Grid item xs={12}>
+        <Button variant="contained" color="secondary" onClick={() => { takeScreenshot() }}>Take Screenshot</Button>
+      </Grid>
     </>
   )
 }

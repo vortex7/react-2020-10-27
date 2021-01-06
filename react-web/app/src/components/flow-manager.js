@@ -223,7 +223,6 @@ const handleAnimationStop = (animationName) => {
 }
 
 const FlowManager = (props) => {
-
   return (
     <>
       <Grid container>
