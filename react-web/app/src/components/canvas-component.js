@@ -17,6 +17,7 @@ const CanvasComponent = ({ canvasState, images, nodes, connectors, animations })
   const classes = useStyles()
 
   const canvasRef = useRef(null)
+  const mirrorRef = useRef(null)
 
   images.forEach((image) => {
     image.ref = createRef()
@@ -219,6 +220,11 @@ const CanvasComponent = ({ canvasState, images, nodes, connectors, animations })
         onMouseUp={handleMouseUp}
         onMouseOut={handleMouseOut}
         onMouseMove={handleMouseMove}
+        width={1000}
+        height={1000}/>
+
+      <image 
+        ref={mirrorRef}
         width={1000}
         height={1000}/>
     </>
