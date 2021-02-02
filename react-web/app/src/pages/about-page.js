@@ -24,7 +24,7 @@ const AboutPage = () => {
     <Container className={classes.root}>
       <Paper className={classes.paper}>
         About
-        <Preferences/>
+        <Preferences email={true} phone={true}/>
       </Paper>
     </Container>
   )
