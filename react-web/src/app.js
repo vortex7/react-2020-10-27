@@ -19,19 +19,6 @@ import { theme } from "./theme"
 
 const drawerWidth = 256
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {"Copyright © "}
-      <Link color="inherit" href="https://material-ui.com/">
-        Zero Dev Group, Inc.
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  )
-}
-
 const styles = {
   root: {
     display: "flex",
@@ -92,7 +79,6 @@ const App = (props) => {
               <Content />
             </main>
             <footer className={classes.footer}>
-              <Copyright />
             </footer>
           </div>
         </div>
