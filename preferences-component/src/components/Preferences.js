@@ -8,33 +8,35 @@ import FormControlLabel from "@material-ui/core/FormControlLabel"
 import FormHelperText from "@material-ui/core/FormHelperText"
 import Switch from "@material-ui/core/Switch"
 
-const Preferences = ({email, phone}) => {
+const Preferences = ({options}) => {
+  console.log(options)
+
   return (
     <Container>
       <FormControl component="fieldset">
-      {email &&
+      {options.email &&
         <>
-          <FormLabel component="legend">Email Preferences</FormLabel>
+          <FormLabel component="legend">{options.email.label}</FormLabel>
           <FormGroup>
             <FormControlLabel
               control={<Switch color="primary" name="paperlessMail" />}
-              label="Paperless Mail"
+              label={options.email.paperless.label}
               color="primary"
             />
             <FormControlLabel
               control={<Switch color="primary" name="receiveEmailOffers" />}
-              label="Receive Email Offers"
+              label={options.email.offers.label}
             />
           </FormGroup>
         </>
       }
-      {phone &&
+      {options.phone &&
         <>
-          <FormLabel component="legend">Phone Preferences</FormLabel>
+          <FormLabel component="legend">{options.phone.label}</FormLabel>
           <FormGroup>
             <FormControlLabel
-              control={<Switch color="primary" name="blah" />}
-              label="Blah"
+              control={<Switch color="primary" name="primaryPhone" />}
+              label={options.phone.primary.label}
               color="primary"
             />
           </FormGroup>

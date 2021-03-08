@@ -20,11 +20,31 @@ const AboutPage = () => {
 
   console.log("About")
 
+  let options = {
+    "style": {
+    },
+    "email": {
+      "label": "Email Preferences",
+      "paperless": {
+        "label": "Paperless Mail"
+      },
+      "offers": {
+        "label": "Receive Email Offers"
+      }
+    },
+    "phone": {
+      "label": "Phone Preferences",
+      "primary": {
+        "label": "Primary Phone"
+      }
+    }
+  }
+
   return (
     <Container className={classes.root}>
       <Paper className={classes.paper}>
         About
-        <Preferences email={true} phone={true}/>
+        <Preferences options={options}/>
       </Paper>
     </Container>
   )
