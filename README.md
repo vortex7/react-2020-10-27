@@ -14,6 +14,7 @@ npm pack
 
 ```
 cd react-web
+npm install ../preferences-component/preferences-component-0.1.0.tgz
 npm install
 npm start
 ```
