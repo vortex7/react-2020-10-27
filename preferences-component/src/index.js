@@ -1,1 +1,1 @@
-export { default as Preferences } from './components/Preferences';
+export { default as Preferences } from './components/preferences';

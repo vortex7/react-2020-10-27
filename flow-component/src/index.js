@@ -1,1 +1,1 @@
-export { default as FlowManager } from './components/FlowManager';
+export { default as FlowManager } from './components/flow-manager';
