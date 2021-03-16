@@ -4,7 +4,8 @@ import Container from "@material-ui/core/Container"
 import { makeStyles } from "@material-ui/core/styles"
 import Paper from "@material-ui/core/Paper"
 
-import FlowManager from "../components/flow-manager"
+// import FlowManager from "../components/flow-manager"
+import { FlowManager } from "flow-component"
 
 const useStyles = makeStyles((theme) => ({
   root: {

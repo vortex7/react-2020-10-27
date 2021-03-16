@@ -9,6 +9,7 @@
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.8.3",
+    "flow-component": "file:../flow-component/flow-component-0.1.0.tgz",
     "luxon": "^1.26.0",
     "preferences-component": "file:../preferences-component/preferences-component-0.1.0.tgz",
     "react": "^17.0.1",
