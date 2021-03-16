@@ -21,7 +21,16 @@ const drawAnimation = (animation, ctx) => {
   if(animation.image) {
     let x = animation.x
     let y = animation.y
-    ctx.drawImage(animation.image.ref.current, x, y, animation.width, animation.height)
+
+    // TODO: Fix this
+    /*
+    try {
+      ctx.drawImage(animation.image.ref.current, x, y, animation.width, animation.height)
+    }
+    catch(e) {
+      // console.log(e)
+    }
+    */
   }
 
   // TODO: Use distance and duration to compute perFrameDistance below

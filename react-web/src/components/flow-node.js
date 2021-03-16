@@ -58,7 +58,15 @@ const drawImage = (node, ctx, withTitle) => {
     y = node.y
   }
   
-  ctx.drawImage(node.image.ref.current, x, y, width, height)
+  // TODO: Fix this
+  /*
+  try {
+    ctx.drawImage(node.image.ref.current, x, y, width, height)
+  }
+  catch(e) {
+    // console.log(e)
+  }
+  */
 }
 
 const createAddButton = (node, ctx) => {
