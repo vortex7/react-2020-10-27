@@ -1,11 +1,15 @@
 import React from "react"
 import InfoIcon from "@material-ui/icons/Info"
+import SettingsIcon from "@material-ui/icons/Settings"
+import CallSplitIcon from "@material-ui/icons/CallSplit"
 
 import AboutPage from "./pages/about-page"
 import FlowPage from "./pages/flow-page"
+import PreferencesPage from "./pages/preferences-page"
 
 const components = {
   "AboutPage": AboutPage,
+  "PreferencesPage": PreferencesPage,
   "FlowPage": FlowPage,
 }
 
@@ -14,7 +18,7 @@ const pagesByName = {
     name: "AboutPage",
     title: "About",
     icon: <InfoIcon />,
-    url: "/about"
+    url: "/"
   },
   "AboutPage": {
     name: "AboutPage",
@@ -25,8 +29,14 @@ const pagesByName = {
   "FlowPage": {
     name: "FlowPage",
     title: "Flow",
-    icon: <InfoIcon />,
+    icon: <CallSplitIcon />,
     url: "/flow"
+  },
+  "PreferencesPage": {
+    name: "PreferencesPage",
+    title: "Preferences",
+    icon: <SettingsIcon />,
+    url: "/preferences"
   },
 }
 
@@ -34,6 +44,7 @@ const pages = [
   pagesByName["HomePage"],
   pagesByName["AboutPage"],
   pagesByName["FlowPage"],
+  pagesByName["PreferencesPage"],
 ]
 
 const categories = [
@@ -45,10 +56,11 @@ const categories = [
     ],
   },
   {
-    name: "Flow",
-    title: "Flow",
+    name: "Components",
+    title: "Components",
     pages: [
       pagesByName["FlowPage"],
+      pagesByName["PreferencesPage"],
     ],
   },
 ]

@@ -3,8 +3,10 @@ import React from "react"
 import Container from "@material-ui/core/Container"
 import { makeStyles } from "@material-ui/core/styles"
 import Paper from "@material-ui/core/Paper"
+import Typography from "@material-ui/core/Typography"
 
-import { Preferences } from "preferences-component"
+import conceptualReactArchitectureImage from "../images/react-conceptual-architecture.jpg"
+import reactBuildProcessImage from "../images/react-build-process.jpg"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -16,36 +18,20 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 const AboutPage = () => {
-  const classes = useStyles();
+  const classes = useStyles()
 
   console.log("About")
 
-  let options = {
-    "style": {
-    },
-    "email": {
-      "label": "Email Preferences",
-      "paperless": {
-        "label": "Paperless Mail"
-      },
-      "offers": {
-        "label": "Receive Email Offers"
-      }
-    },
-    "phone": {
-      "label": "Phone Preferences",
-      "primary": {
-        "label": "Primary Phone"
-      }
-    }
-  }
-
   return (
     <Container className={classes.root}>
-      <Paper className={classes.paper}>
-        About
-        <Preferences options={options}/>
-      </Paper>
+      <Typography variant="h4" gutterBottom>
+        React Web Components
+      </Typography>
+      <Typography variant="body1" gutterBottom>
+        A collection of configurable react components installed as separate NPM packages.
+      </Typography>
+      <img src={ conceptualReactArchitectureImage } width="100%" />
+      <img src={ reactBuildProcessImage } width="100%" />
     </Container>
   )
 }
