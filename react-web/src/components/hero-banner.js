@@ -42,21 +42,33 @@ const HeroBanner = (props) => {
       image: "",
       title: "Content One",
       text: "Blah, blah, blah",
+      click: () => {
+        alert("Content One")  
+      },
     },
     contentTwo: {
       image: "",
       title: "Content Two",
       text: "Blah, blah, blah",
+      click: () => {
+        alert("Content Two")  
+      },
     },
     contentThree: {
       image: "",
       title: "Content Three",
       text: "Blah, blah, blah",
+      click: () => {
+        alert("Content Three")  
+      },
     },
     contentFour: {
       image: "",
       title: "Content Four",
       text: "Blah, blah, blah",
+      click: () => {
+        alert("Content Four")  
+      },
     },
   }
 

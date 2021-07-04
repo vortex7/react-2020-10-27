@@ -13,7 +13,7 @@ const useStyles = makeStyles({
     backgroundRepeat: "no-repeat",
     backgroundSize: "contain",
     textAlign: "center",
-    height: "400px"
+    height: "400px",
   },
   spacer: {
     height: "40%"
@@ -30,7 +30,7 @@ const Hexagon = ({options}) => {
   const classes = useStyles()
 
   return (
-    <Container className={classes.root}>
+    <Container className={classes.root} onClick={event => { options.click() }}>
       <Container className={classes.spacer}></Container>
       <Container className={classes.title}>{options.title}</Container>
       <Container className={classes.text}>{options.text}</Container>
