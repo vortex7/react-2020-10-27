@@ -5,8 +5,9 @@ import TextField from "@material-ui/core/TextField"
 import Typography from "@material-ui/core/Typography"
 import { makeStyles } from "@material-ui/core/styles"
 
+import Hexagon from "./hexagon"
+
 import heroBannerImage from "../images/hero-banner.jpg"
-import hexagonBackgroundImage from "../images/hexagon-background.png"
 
 const useStyles = makeStyles({
   root: {
@@ -31,17 +32,33 @@ const useStyles = makeStyles({
     backgroundColor: "white",
     width: "50%",
   },
-  hexagon: {
-    backgroundImage: `url(${hexagonBackgroundImage})`,
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "contain",
-    textAlign: "center",
-    height: "400px"
-  },
 })
 
 const HeroBanner = (props) => {
   const classes = useStyles()
+
+  const hexagons = {
+    contentOne: {
+      image: "",
+      title: "Content One",
+      text: "Blah, blah, blah",
+    },
+    contentTwo: {
+      image: "",
+      title: "Content Two",
+      text: "Blah, blah, blah",
+    },
+    contentThree: {
+      image: "",
+      title: "Content Three",
+      text: "Blah, blah, blah",
+    },
+    contentFour: {
+      image: "",
+      title: "Content Four",
+      text: "Blah, blah, blah",
+    },
+  }
 
   return (
     <Container className={classes.root}>
@@ -56,25 +73,17 @@ const HeroBanner = (props) => {
         </Grid>
         <Grid item xs={12}>
           <Grid container spacing={2}>
-            <Grid className={classes.hexagon} item xs={3}>
-              <Typography variant="h4" className={classes.text}>
-                Blah
-              </Typography>
+            <Grid item xs={3}>
+              <Hexagon options={hexagons.contentOne} />
             </Grid>
-            <Grid className={classes.hexagon} item xs={3}>
-              <Typography variant="h4" className={classes.text}>
-                Blah
-              </Typography>
+            <Grid item xs={3}>
+              <Hexagon options={hexagons.contentTwo} />
             </Grid>
-            <Grid className={classes.hexagon} item xs={3}>
-              <Typography variant="h4" className={classes.text}>
-                Blah
-              </Typography>
+            <Grid item xs={3}>
+              <Hexagon options={hexagons.contentThree} />
             </Grid>
-            <Grid className={classes.hexagon} item xs={3}>
-              <Typography variant="h4" className={classes.text}>
-                Blah
-              </Typography>
+            <Grid item xs={3}>
+              <Hexagon options={hexagons.contentFour} />
             </Grid>
           </Grid>
         </Grid>
