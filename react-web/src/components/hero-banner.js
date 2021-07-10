@@ -5,7 +5,7 @@ import TextField from "@material-ui/core/TextField"
 import Typography from "@material-ui/core/Typography"
 import { makeStyles } from "@material-ui/core/styles"
 
-import Hexagon from "./hexagon"
+import ContentCard from "./content-card"
 
 import heroBannerImage from "../images/hero-banner.jpg"
 
@@ -37,40 +37,83 @@ const useStyles = makeStyles({
 const HeroBanner = (props) => {
   const classes = useStyles()
 
-  const hexagons = {
-    contentOne: {
-      image: "",
+  const hexagons = [
+    {
+      image: "hexagon",
+      icon: "date_range",
       title: "Content One",
       text: "Blah, blah, blah",
       click: () => {
         alert("Content One")  
       },
     },
-    contentTwo: {
-      image: "",
+    {
+      image: "hexagon",
+      icon: "sync",
       title: "Content Two",
       text: "Blah, blah, blah",
       click: () => {
         alert("Content Two")  
       },
     },
-    contentThree: {
-      image: "",
+    {
+      image: "hexagon",
+      icon: "restore_page",
       title: "Content Three",
       text: "Blah, blah, blah",
       click: () => {
         alert("Content Three")  
       },
     },
-    contentFour: {
-      image: "",
+    {
+      image: "hexagon",
+      icon: "calendar_today",
       title: "Content Four",
       text: "Blah, blah, blah",
       click: () => {
         alert("Content Four")  
       },
     },
-  }
+  ]
+  
+  const squares = [
+    {
+      image: "square",
+      icon: "date_range",
+      title: "Content One",
+      text: "Blah, blah, blah",
+      click: () => {
+        alert("Content One")  
+      },
+    },
+    {
+      image: "square",
+      icon: "sync",
+      title: "Content Two",
+      text: "Blah, blah, blah",
+      click: () => {
+        alert("Content Two")  
+      },
+    },
+    {
+      image: "square",
+      icon: "restore_page",
+      title: "Content Three",
+      text: "Blah, blah, blah",
+      click: () => {
+        alert("Content Three")  
+      },
+    },
+    {
+      image: "square",
+      icon: "calendar_today",
+      title: "Content Four",
+      text: "Blah, blah, blah",
+      click: () => {
+        alert("Content Four")  
+      },
+    },
+  ]
 
   return (
     <Container className={classes.root}>
@@ -85,18 +128,24 @@ const HeroBanner = (props) => {
         </Grid>
         <Grid item xs={12}>
           <Grid container spacing={2}>
-            <Grid item xs={3}>
-              <Hexagon options={hexagons.contentOne} />
-            </Grid>
-            <Grid item xs={3}>
-              <Hexagon options={hexagons.contentTwo} />
-            </Grid>
-            <Grid item xs={3}>
-              <Hexagon options={hexagons.contentThree} />
-            </Grid>
-            <Grid item xs={3}>
-              <Hexagon options={hexagons.contentFour} />
-            </Grid>
+            {hexagons.map((hexagonConfig, index) => {
+              return (
+                <Grid item xs={3}>
+                  <ContentCard options={hexagonConfig} />
+                </Grid>
+              )
+            })}
+          </Grid>
+        </Grid>
+        <Grid item xs={12}>
+          <Grid container spacing={2}>
+            {squares.map((squareConfig, index) => {
+              return (
+                <Grid item xs={3}>
+                  <ContentCard options={squareConfig} />
+                </Grid>
+              )
+            })}
           </Grid>
         </Grid>
       </Grid>
