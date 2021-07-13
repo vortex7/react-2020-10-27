@@ -6,13 +6,16 @@ import Paper from "@material-ui/core/Paper"
 import Typography from "@material-ui/core/Typography"
 
 import HeroBanner from "../components/hero-banner"
+import ChooseCard from "../components/choose-card"
+import InfoGraphics from "../components/infographics"
+import OrgChart from "../components/org-chart"
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    marginTop: "10px"
+    // marginTop: "10px"
   },
   paper: {
-    padding: "10px"
+    // padding: "10px"
   },
 }))
 
@@ -22,9 +25,12 @@ const AboutPage = () => {
   console.log("About")
 
   return (
-    <Container className={classes.root}>
+    <div className={classes.root}>
       <HeroBanner/>
-    </Container>
+      <ChooseCard/>
+      <InfoGraphics/>
+      <OrgChart/>
+    </div>
   )
 }
 

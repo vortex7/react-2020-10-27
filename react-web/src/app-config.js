@@ -6,27 +6,56 @@ import CallSplitIcon from "@material-ui/icons/CallSplit"
 import AboutPage from "./pages/about-page"
 
 const components = {
-  "AboutPage": AboutPage,
+  "Home": AboutPage,
 }
 
 const pagesByName = {
-  "HomePage": {
-    name: "AboutPage",
-    title: "About",
+  "Home": {
+    name: "Home",
+    title: "Home",
     icon: <InfoIcon />,
     url: "/"
   },
-  "AboutPage": {
-    name: "AboutPage",
-    title: "About",
+  "EAWiki": {
+    name: "EAWiki",
+    title: "EA-Wiki",
     icon: <InfoIcon />,
-    url: "/about"
+    url: "/EA-Wiki"
+  },
+  "Domains": {
+    name: "Domains",
+    title: "Domains",
+    icon: <InfoIcon />,
+    url: "/Domains"
+  },
+  "Systems": {
+    name: "Systems",
+    title: "Systems",
+    icon: <InfoIcon />,
+    url: "/Systems"
+  },
+  "Graphs": {
+    name: "Graphs",
+    title: "Graphs",
+    icon: <InfoIcon />,
+    url: "/Graphs"
+  },
+  "Visualizations": {
+    name: "Visualizations",
+    title: "Visualizations",
+    icon: <InfoIcon />,
+    url: "/Visualizations"
   }
+  
 }
 
 const pages = [
-  pagesByName["HomePage"],
-  pagesByName["AboutPage"],
+  pagesByName["Home"],
+  pagesByName["EAWiki"],
+  pagesByName["Domains"],
+  pagesByName["Systems"],
+  pagesByName["Graphs"],
+  pagesByName["Visualizations"],
 ]
 
 const categories = [

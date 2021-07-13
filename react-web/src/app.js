@@ -37,12 +37,12 @@ const styles = {
   },
   main: {
     flex: 1,
-    padding: theme.spacing(6, 4),
-    background: "#eaeff1",
+    // padding: theme.spacing(6, 4),
+    // background: "#eaeff1",
   },
   footer: {
     padding: theme.spacing(2),
-    background: "#eaeff1",
+    // background: "#eaeff1",
   },
 }
 
@@ -59,8 +59,8 @@ const App = (props) => {
     <ThemeProvider theme={theme}>
       <Router>
         <div className={classes.root}>
-          <CssBaseline />
-          <nav className={classes.drawer}>
+          {/* <CssBaseline /> */}
+          {/* <nav className={classes.drawer}>
             <Hidden smUp implementation="js">
               <Navigator
                 PaperProps={{ style: { width: drawerWidth } }}
@@ -72,7 +72,7 @@ const App = (props) => {
             <Hidden xsDown implementation="css">
               <Navigator PaperProps={{ style: { width: drawerWidth } }} />
             </Hidden>
-          </nav>
+          </nav> */}
           <div className={classes.app}>
             <Header onDrawerToggle={handleDrawerToggle} />
             <main className={classes.main}>
