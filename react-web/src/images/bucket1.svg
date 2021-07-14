@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="318" height="364.435" viewBox="0 0 318 364.435">
+  <defs>
+    <filter id="Path_4860" x="0" y="0" width="318" height="364.435" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="bucket1" transform="translate(-180.001 -515.863)">
+    <g transform="matrix(1, 0, 0, 1, 180, 515.86)" filter="url(#Path_4860)">
+      <path id="Path_4860-2" data-name="Path 4860" d="M255.835,419.12,390.1,168.34,240.108,254.949V428.166L390.1,514.775l150.011-86.609V254.949L390.1,168.34Z" transform="translate(-231.11 -162.34)" fill="#fff"/>
+    </g>
+    <g id="ARB-Calendar" transform="translate(-226.468 -342)">
+      <path id="Path_3641" data-name="Path 3641" d="M418.521,477.873l-47.5-27.5V395.369l47.5-27.5,47.5,27.5v55.008Zm-42.107-30.62,42.107,24.377,42.113-24.377v-48.76l-42.113-24.382-42.107,24.382Z" transform="translate(146.944 539.127)" fill="#047ebb"/>
+      <path id="Rectangle-path_26" data-name="Rectangle-path 26" d="M454.489,991.816c0-2.606,1.567-4.719,3.5-4.719h35c1.933,0,3.5,2.113,3.5,4.719v33.038c0,2.606-1.569,4.719-3.5,4.719h-35c-1.933,0-3.5-2.113-3.5-4.719Z" transform="translate(89.976 -42.573)" fill="none" stroke="#1791cc" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+      <line id="Line_1270" data-name="Line 1270" x2="40.79" transform="translate(545.534 955.826)" fill="none" stroke="#1791cc" stroke-linejoin="round" stroke-width="3"/>
+      <rect id="Rectangle_16380" data-name="Rectangle 16380" width="4.184" height="4.184" transform="translate(554.947 964.193)" fill="none" stroke="#1791cc" stroke-linejoin="round" stroke-width="3"/>
+      <rect id="Rectangle_16381" data-name="Rectangle 16381" width="4.184" height="4.184" transform="translate(563.314 964.193)" fill="none" stroke="#1791cc" stroke-linejoin="round" stroke-width="3"/>
+      <rect id="Rectangle_16382" data-name="Rectangle 16382" width="4.184" height="4.184" transform="translate(571.682 964.193)" fill="none" stroke="#1791cc" stroke-linejoin="round" stroke-width="3"/>
+      <rect id="Rectangle_16383" data-name="Rectangle 16383" width="4.184" height="4.184" transform="translate(554.947 972.561)" fill="none" stroke="#1791cc" stroke-linejoin="round" stroke-width="3"/>
+      <rect id="Rectangle_16384" data-name="Rectangle 16384" width="4.184" height="4.184" transform="translate(563.314 972.561)" fill="none" stroke="#1791cc" stroke-linejoin="round" stroke-width="3"/>
+      <rect id="Rectangle_16385" data-name="Rectangle 16385" width="4.184" height="4.184" transform="translate(571.682 972.561)" fill="none" stroke="#1791cc" stroke-linejoin="round" stroke-width="3"/>
+      <line id="Line_1271" data-name="Line 1271" y1="8.367" transform="translate(552.855 937)" fill="none" stroke="#1791cc" stroke-linejoin="round" stroke-width="3"/>
+      <line id="Line_1272" data-name="Line 1272" y1="8.367" transform="translate(577.957 937)" fill="none" stroke="#1791cc" stroke-linejoin="round" stroke-width="3"/>
+    </g>
+  </g>
+</svg>

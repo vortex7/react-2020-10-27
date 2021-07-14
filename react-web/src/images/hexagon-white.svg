@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="318" height="364.435" viewBox="0 0 318 364.435">
+  <defs>
+    <filter id="hexagon-white" x="0" y="0" width="318" height="364.435" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="hexagon-white-2" data-name="hexagon-white" transform="translate(-1539.001 -179.565)">
+    <g transform="matrix(1, 0, 0, 1, 1539, 179.57)" filter="url(#hexagon-white)">
+      <path id="hexagon-white-3" data-name="hexagon-white" d="M255.835,419.12,390.1,168.34,240.108,254.949V428.166L390.1,514.775l150.011-86.609V254.949L390.1,168.34Z" transform="translate(-231.11 -162.34)" fill="#fff"/>
+    </g>
+  </g>
+</svg>
